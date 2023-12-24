@@ -53,7 +53,7 @@ class Server:
         records = self.dataset()
 
         (start, end) = index_range(page, page_size)
-        if len(records) < start or len(records) < end:
+        if start > len(records):
             return []
 
         return records[start:end]
