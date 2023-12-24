@@ -51,9 +51,9 @@ class Server:
             raise AssertionError(error_msg)
 
         records = self.dataset()
-        if len(records) < page or len(records) < page_size:
-            return []
 
         (start, end) = index_range(page, page_size)
+        if len(records) < start or len(records) < end:
+            return []
 
         return records[start:end]
