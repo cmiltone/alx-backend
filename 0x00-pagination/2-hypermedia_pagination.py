@@ -70,7 +70,7 @@ class Server:
 
         if end < len(self.__dataset):
             next_page = page + 1
-        
+
         if start > 0:
             prev_page = page - 1
         _dict = {
