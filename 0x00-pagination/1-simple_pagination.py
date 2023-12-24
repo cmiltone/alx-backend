@@ -49,8 +49,8 @@ class Server:
         if page < 0 or page_size < 0:
             error_msg = 'Both page and page_size must be greater than 0'
             raise AssertionError(error_msg)
-        server = Server()
-        records = server.dataset()
+
+        records = self.dataset()
         if len(records) < page or len(records) < page_size:
             return []
 
