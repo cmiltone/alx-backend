@@ -47,9 +47,12 @@ class Server:
         if not isinstance(page, int) or not isinstance(page_size, int):
             raise AssertionError('Both page and page_size must be integers')
         if page < 0 or page_size < 0:
-            raise AssertionError('Both page and page_size must be greater than 0')
+            error_msg = 'Both page and page_size must be greater than 0'
+            raise AssertionError(error_msg)
         server = Server()
         records = server.dataset()
+        if len(records) < page or len(records) < page_size:
+            return []
 
         (start, end) = index_range(page, page_size)
 
