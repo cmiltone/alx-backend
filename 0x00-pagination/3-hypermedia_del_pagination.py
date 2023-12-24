@@ -42,7 +42,8 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """returns dictionary with info for pagination after delete"""
         records = self.indexed_dataset()
-        assert index is not None and index >= 0 and index <= max(records.keys())
+        _max = max(records.keys())
+        assert index is not None and index >= 0 and index <= _max
         data = []
         number_of_records = 0
         next_index = None
