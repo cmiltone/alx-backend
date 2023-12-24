@@ -44,8 +44,11 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """returns expected section of dataset"""
-        assert type(page) == int and type(page_size) == int
-        assert page > 0 and page_size > 0
+        if not isinstance(page, int) or not isinstance(page_size, int):
+            raise AssertionError('Both page and page_size must be integers')
+        if page <= 0 or page_size <= 0:
+            error_msg = 'Both page and page_size must be greater than 0'
+            raise AssertionError(error_msg)
 
         records = self.dataset()
 
